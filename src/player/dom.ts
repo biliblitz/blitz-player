@@ -15,6 +15,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
           <div class="player__play-button"></div>
           <div class="player__pause-button"></div>
           <div class="player__mute-button"></div>
+          <div class="player__volume-slider-parent">
+            <input class="player__volume-slider" type="range" />
+          </div>
           <div class="player__time">00:00/24:33</div>
         </div>
         <div class="player__bottom-right">
@@ -41,6 +44,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const controlBottomLeft = $("bottom-left") as HTMLDivElement;
   const controlBottomRight = $("bottom-right") as HTMLDivElement;
 
+  const volumeSliderParent = $("volume-slider-parent") as HTMLDivElement;
+  const volumeSlider = $("volume-slider") as HTMLInputElement;
+
   const playButton = $("play-button") as HTMLDivElement;
   const pauseButton = $("pause-button") as HTMLDivElement;
   const muteButton = $("mute-button") as HTMLDivElement;
@@ -58,6 +64,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     controlBottom,
     controlBottomLeft,
     controlBottomRight,
+
+    volumeSlider,
+    volumeSliderParent,
 
     playButton,
     pauseButton,

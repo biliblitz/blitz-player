@@ -1,11 +1,11 @@
 import { PlayerDOM } from "./dom";
 
-import playSvg from "../svg/play.svg?raw";
-import pauseSvg from "../svg/pause.svg?raw";
+import playOutline from "../svg/play-outline.svg?raw";
+import pauseOutline from "../svg/pause-outline.svg?raw";
 
 export function createPlayPause(dom: PlayerDOM) {
-  dom.playButton.innerHTML = playSvg;
-  dom.pauseButton.innerHTML = pauseSvg;
+  dom.playButton.innerHTML = playOutline;
+  dom.pauseButton.innerHTML = pauseOutline;
 
   const play = () => dom.video.play();
   const pause = () => dom.video.pause();
