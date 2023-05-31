@@ -1,0 +1,23 @@
+.player {
+  aspect-ratio: 16 / 9;
+}
+
+.player::backdrop {
+  background-color: black;
+}
+
+.player__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.player__ass-parent {
+  position: relative;
+}
+
+.player__canvas {
+  position: absolute;
+  pointer-events: none;
+  display: block;
+}
