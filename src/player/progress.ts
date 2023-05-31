@@ -1,8 +1,9 @@
 import { getBufferPercent } from "../util/buffer";
-import { formatTime2 } from "../util/time";
+import { formatTime2, formatTimeMs } from "../util/time";
 import { PlayerDOM } from "./dom";
+import { Notify } from "./notify";
 
-export function createProgress(dom: PlayerDOM) {
+export function createProgress(dom: PlayerDOM, notify: Notify) {
   let sliding = false;
   let slidingValue = 0;
 
@@ -41,6 +42,7 @@ export function createProgress(dom: PlayerDOM) {
   dom.progressSlider.addEventListener("input", () => {
     sliding = true;
     slidingValue = dom.progressSlider.valueAsNumber;
+    notify.setMessage(formatTimeMs(slidingValue * dom.video.duration));
     updateProgressUI();
   });
   dom.progressSlider.addEventListener("change", () => {
@@ -48,6 +50,26 @@ export function createProgress(dom: PlayerDOM) {
     dom.video.currentTime =
       dom.progressSlider.valueAsNumber * dom.video.duration;
     dom.video.play();
+    notify.setMessage();
     updateProgressUI();
+  });
+  dom.progressSlider.addEventListener("mousemove", (e) => {
+    if (!sliding) {
+      const rect = dom.progressSlider.getBoundingClientRect();
+      const percent = (e.clientX - rect.x) / rect.width;
+      notify.setMessage(formatTimeMs(percent * dom.video.duration));
+    }
+  });
+  dom.progressSlider.addEventListener("mouseleave", () => notify.setMessage());
+
+  dom.player.addEventListener("keydown", (e) => {
+    if (e.code === "ArrowLeft") {
+      dom.video.currentTime = dom.video.currentTime - 5.0;
+      dom.video.play();
+    }
+    if (e.code === "ArrowRight") {
+      dom.video.currentTime = dom.video.currentTime + 5.0;
+      dom.video.play();
+    }
   });
 }

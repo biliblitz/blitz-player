@@ -1,4 +1,5 @@
 import { PlayerDOM } from "./dom";
+import { Notify } from "./notify";
 
 import volumeHighOutline from "../svg/volume-high-outline.svg?raw";
 import volumeLowOutline from "../svg/volume-low-outline.svg?raw";
@@ -6,7 +7,7 @@ import volumeMediumOutline from "../svg/volume-medium-outline.svg?raw";
 import volumeMuteOutline from "../svg/volume-mute-outline.svg?raw";
 import volumeOffOutline from "../svg/volume-off-outline.svg?raw";
 
-export function createVolume(dom: PlayerDOM) {
+export function createVolume(dom: PlayerDOM, notify: Notify) {
   dom.muteButton.addEventListener("mouseenter", () => {
     dom.controlBottom.classList.add("player__volume-active");
   });
@@ -53,15 +54,36 @@ export function createVolume(dom: PlayerDOM) {
   };
 
   dom.muteButton.addEventListener("click", toggleMute);
-  dom.player.addEventListener(
-    "keydown",
-    (e) => e.code === "KeyM" && toggleMute()
-  );
+
+  const getVolumeMessage = () =>
+    `Volume ${Math.round(dom.video.volume * 100)}%`;
+
+  dom.player.addEventListener("keydown", (e) => {
+    if (e.code === "KeyM") {
+      toggleMute();
+    }
+    if (e.code === "ArrowUp") {
+      e.preventDefault();
+      dom.video.volume = Math.min(dom.video.volume + 0.1, 1);
+      notify.setMessageTimeout(getVolumeMessage(), 2000);
+    }
+    if (e.code === "ArrowDown") {
+      e.preventDefault();
+      dom.video.volume = Math.max(dom.video.volume - 0.1, 0);
+      notify.setMessageTimeout(getVolumeMessage(), 2000);
+    }
+  });
 
   dom.volumeSlider.addEventListener("input", () => {
     dom.video.muted = false;
     dom.video.volume = dom.volumeSlider.valueAsNumber;
+    notify.setMessage(getVolumeMessage());
   });
+
+  notify.mount(dom.muteButton, () =>
+    dom.video.muted ? "Unmute (M)" : "Mute (M)"
+  );
+  notify.mount(dom.volumeSlider, "Volume (Up, Down)");
 
   updateVolumeUI();
 

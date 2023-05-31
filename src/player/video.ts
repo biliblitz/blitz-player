@@ -7,5 +7,5 @@ export function createVideo(dom: PlayerDOM) {
     dom.video.play();
   };
 
-  load("/PV.mp4");
+  load("/YOASOBI「アイドル」 Official Music Video [ZRtdQ81jPUQ].webm");
 }

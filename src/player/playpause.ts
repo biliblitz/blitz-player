@@ -1,9 +1,10 @@
 import { PlayerDOM } from "./dom";
+import { Notify } from "./notify";
 
 import playOutline from "../svg/play-outline.svg?raw";
 import pauseOutline from "../svg/pause-outline.svg?raw";
 
-export function createPlayPause(dom: PlayerDOM) {
+export function createPlayPause(dom: PlayerDOM, notify: Notify) {
   dom.playButton.innerHTML = playOutline;
   dom.pauseButton.innerHTML = pauseOutline;
 
@@ -13,6 +14,10 @@ export function createPlayPause(dom: PlayerDOM) {
 
   dom.playButton.addEventListener("click", play);
   dom.pauseButton.addEventListener("click", pause);
+
+  notify.mount(dom.playButton, "Play (K)");
+  notify.mount(dom.pauseButton, "Pause (K)");
+
   dom.container.addEventListener("click", toggle);
   dom.player.addEventListener("keydown", (e) => e.code === "KeyK" && toggle());
 

@@ -9,6 +9,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     </div>
     <div class="player__control">
       <div class="player__top">
+        <div class="player__notify">加载中...</div>
+      </div>
+      <div class="player__middle">
         <div class="player__progress-slider-parent">
           <input class="player__progress-slider" type="range" />
         </div>
@@ -59,6 +62,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const fullscreenQuitButton = $("fullscreen-quit-button") as HTMLDivElement;
 
   const time = $("time") as HTMLDivElement;
+  const notify = $("notify") as HTMLDivElement;
 
   return {
     video,
@@ -84,6 +88,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     fullscreenQuitButton,
 
     time,
+    notify,
   };
 }
 
