@@ -138,7 +138,7 @@
 }
 
 .player__volume-slider::-webkit-slider-thumb {
-  all: unset;
+  appearance: none;
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 100%;
@@ -146,7 +146,7 @@
 }
 
 .player__volume-slider::-moz-range-thumb {
-  all: unset;
+  appearance: none;
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 100%;
@@ -194,7 +194,7 @@
 }
 
 .player__progress-slider::-webkit-slider-thumb {
-  all: unset;
+  appearance: none;
   width: 0;
   height: 0;
   opacity: 0;
@@ -210,7 +210,7 @@
 }
 
 .player__progress-slider::-moz-range-thumb {
-  all: unset;
+  appearance: none;
   width: 0;
   height: 0;
   opacity: 0;
