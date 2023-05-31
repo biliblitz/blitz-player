@@ -9,6 +9,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     </div>
     <div class="player__control">
       <div class="player__top">
+        <div class="player__progress-slider-parent">
+          <input class="player__progress-slider" type="range" />
+        </div>
       </div>
       <div class="player__bottom">
         <div class="player__bottom-left">
@@ -44,8 +47,10 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const controlBottomLeft = $("bottom-left") as HTMLDivElement;
   const controlBottomRight = $("bottom-right") as HTMLDivElement;
 
-  const volumeSliderParent = $("volume-slider-parent") as HTMLDivElement;
   const volumeSlider = $("volume-slider") as HTMLInputElement;
+  const volumeSliderParent = $("volume-slider-parent") as HTMLDivElement;
+  const progressSlider = $("progress-slider") as HTMLInputElement;
+  const progressSliderParent = $("progress-slider-parent") as HTMLDivElement;
 
   const playButton = $("play-button") as HTMLDivElement;
   const pauseButton = $("pause-button") as HTMLDivElement;
@@ -69,6 +74,8 @@ export function createPlayerDOM(mount: HTMLDivElement) {
 
     volumeSlider,
     volumeSliderParent,
+    progressSlider,
+    progressSliderParent,
 
     playButton,
     pauseButton,
