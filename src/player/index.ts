@@ -5,6 +5,7 @@ import { createFullscreen } from "./fullscreen";
 import { createPlayPause } from "./playpause";
 import { createVideo } from "./video";
 import { createVolume } from "./volume";
+import { createTime } from "./time";
 
 export function createPlayer(mount: HTMLDivElement) {
   const dom = createPlayerDOM(mount);
@@ -14,6 +15,7 @@ export function createPlayer(mount: HTMLDivElement) {
   const { play, pause } = createPlayPause(dom);
   createVideo(dom);
   createVolume(dom);
+  createTime(dom);
 
   return {
     fullscreen,

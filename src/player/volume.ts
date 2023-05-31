@@ -39,7 +39,7 @@ export function createVolume(dom: PlayerDOM) {
 
   let oldVolume = 0;
 
-  dom.muteButton.addEventListener("click", () => {
+  const toggleMute = () => {
     if (dom.video.muted) {
       dom.video.muted = false;
       dom.video.volume = oldVolume;
@@ -50,7 +50,13 @@ export function createVolume(dom: PlayerDOM) {
       dom.video.volume = 0;
       dom.volumeSlider.valueAsNumber = 0;
     }
-  });
+  };
+
+  dom.muteButton.addEventListener("click", toggleMute);
+  dom.player.addEventListener(
+    "keydown",
+    (e) => e.code === "KeyM" && toggleMute()
+  );
 
   dom.volumeSlider.addEventListener("input", () => {
     dom.video.muted = false;
@@ -58,4 +64,8 @@ export function createVolume(dom: PlayerDOM) {
   });
 
   updateVolumeUI();
+
+  return {
+    toggleMute,
+  };
 }

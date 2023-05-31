@@ -9,22 +9,26 @@ export function createPlayPause(dom: PlayerDOM) {
 
   const play = () => dom.video.play();
   const pause = () => dom.video.pause();
+  const toggle = () => (dom.video.paused ? play() : pause());
 
   dom.playButton.addEventListener("click", play);
   dom.pauseButton.addEventListener("click", pause);
+  dom.container.addEventListener("click", toggle);
+  dom.player.addEventListener("keydown", (e) => e.code === "KeyK" && toggle());
 
-  const onPauseChange = () => {
+  const updatePlayPauseUI = () => {
     const paused = dom.video.paused;
     dom.playButton.hidden = !paused;
     dom.pauseButton.hidden = paused;
   };
 
-  dom.video.addEventListener("play", onPauseChange);
-  dom.video.addEventListener("pause", onPauseChange);
-  onPauseChange();
+  dom.video.addEventListener("play", updatePlayPauseUI);
+  dom.video.addEventListener("pause", updatePlayPauseUI);
+  updatePlayPauseUI();
 
   return {
     play,
     pause,
+    toggle,
   };
 }

@@ -14,12 +14,10 @@ export function createFullscreen(dom: PlayerDOM) {
 
   dom.fullscreenButton.addEventListener("click", fullscreen);
   dom.fullscreenQuitButton.addEventListener("click", exitFullscreen);
-
-  dom.player.addEventListener("keydown", (e) => {
-    if (e.code === "KeyF") {
-      toggleFullscreen();
-    }
-  });
+  dom.player.addEventListener(
+    "keydown",
+    (e) => e.code === "KeyF" && toggleFullscreen()
+  );
 
   return {
     fullscreen,

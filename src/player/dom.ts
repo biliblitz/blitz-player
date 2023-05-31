@@ -18,7 +18,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
           <div class="player__volume-slider-parent">
             <input class="player__volume-slider" type="range" />
           </div>
-          <div class="player__time">00:00/24:33</div>
+          <div class="player__time">--:--/--:--</div>
         </div>
         <div class="player__bottom-right">
           <div class="player__subtitles-button"></div>
@@ -53,6 +53,8 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const fullscreenButton = $("fullscreen-button") as HTMLDivElement;
   const fullscreenQuitButton = $("fullscreen-quit-button") as HTMLDivElement;
 
+  const time = $("time") as HTMLDivElement;
+
   return {
     video,
     parent,
@@ -73,6 +75,8 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     muteButton,
     fullscreenButton,
     fullscreenQuitButton,
+
+    time,
   };
 }
 
