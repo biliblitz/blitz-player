@@ -57,7 +57,7 @@ export function createVolume(player: Player) {
   player.dom.muteButton.addEventListener("click", toggleMute);
 
   const getVolumeMessage = () =>
-    player.i18n.volume_percent.replace(
+    player.i18n.volume_format.replace(
       "{%}",
       `${Math.round(player.dom.video.volume * 100)}%`
     );
