@@ -15,5 +15,6 @@
   "subtitle_load": "字幕: {%}",
   "normal": "正常",
   "speed": "播放速度",
-  "speed_format": "播放速度 {%}"
+  "speed_format": "播放速度 {%}",
+  "loop": "循环播放"
 }

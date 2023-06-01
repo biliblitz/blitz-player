@@ -46,6 +46,10 @@ export function createSpeed(player: Player) {
 
   updatePlaybackRateUI(player.dom.video.playbackRate);
 
+  player.menu.createMenuEntry(player.i18n.speed, () => {
+    player.settings.changeToPage("speed");
+  });
+
   return { setRate };
 }
 
