@@ -8,5 +8,9 @@
   "volume_percent": "Volume {%}",
   "mute_m": "Mute (M)",
   "unmute_m": "Unmute (M)",
-  "volume_up_down": "Volume (Up, Down)"
+  "volume_up_down": "Volume (Up, Down)",
+  "settings": "Settings",
+  "subtitles": "Subtitles",
+  "off": "off",
+  "subtitle_load": "Subtitle: {%}"
 }

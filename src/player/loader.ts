@@ -1,30 +1,24 @@
-import { PlayerDOM } from "./dom";
-import { I18n } from "./i18n";
-import { Notify } from "./notify";
+import { Player } from "./player";
 
-export function createLoader(dom: PlayerDOM, notify: Notify, i18n: I18n) {
+export function createLoader(player: Player) {
   const load = (src: string) => {
-    dom.video.src = src;
-    dom.video.load();
+    player.dom.video.src = src;
+    player.dom.video.load();
   };
 
-  const playOrMutePlay = async () => {
-    try {
-      try {
-        // try play directly
-        await dom.video.play();
-      } catch {
-        // try mute and play
-        dom.video.muted = true;
-        await dom.video.play();
-        notify.setMessageTimeout(i18n.playing_muted, 5000);
-      }
-    } catch (err) {
-      // failed to play
-      notify.setMessage(i18n.failed_to_play);
-      console.error(err);
-    }
-  };
+  const playOrMutePlay = () =>
+    player.dom.video.play().catch(() => {
+      player.dom.video.muted = true;
+      return player.dom.video.play().then(
+        () => player.notify.setMessageTimeout(player.i18n.playing_muted, 5000),
+        (err) => {
+          player.notify.setMessage(player.i18n.failed_to_play);
+          console.error(err);
+        }
+      );
+    });
 
   return { load, playOrMutePlay };
 }
+
+export type LoaderAPI = ReturnType<typeof createLoader>;

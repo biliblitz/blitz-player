@@ -1,14 +1,16 @@
-import { createPlayer } from "./player";
+import { Player } from "./player/player";
 
 const app = document.getElementById("app") as HTMLDivElement;
 
-const player = createPlayer({ container: app, language: "ja-JP" });
+const player = new Player({ container: app });
 
-player.load("/YOASOBI「アイドル」 Official Music Video [ZRtdQ81jPUQ].webm");
+player.loader.load(
+  "/YOASOBI「アイドル」 Official Music Video [ZRtdQ81jPUQ].webm"
+);
 // player.load("/onimai.mkv");
 // player.playOrMutePlay();
 
-player.addSubTrack({
+player.subtitle.addSubTrack({
   type: "ass",
   language: "zh",
   title: "简体中文",
@@ -25,4 +27,4 @@ player.addSubTrack({
   ],
 });
 
-player.loadSubTrack("zh");
+player.subtitle.loadSubTrack("zh");

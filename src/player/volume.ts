@@ -1,95 +1,93 @@
-import { PlayerDOM } from "./dom";
-import { Notify } from "./notify";
-import { I18n } from "./i18n";
-
 import volumeHighOutline from "../svg/volume-high-outline.svg?raw";
 import volumeLowOutline from "../svg/volume-low-outline.svg?raw";
 import volumeMediumOutline from "../svg/volume-medium-outline.svg?raw";
 import volumeMuteOutline from "../svg/volume-mute-outline.svg?raw";
 import volumeOffOutline from "../svg/volume-off-outline.svg?raw";
 
+import { Player } from "./player";
+
 const volumeActiveClass = "blzplayer-volume-active";
 
-export function createVolume(dom: PlayerDOM, notify: Notify, i18n: I18n) {
-  dom.muteButton.addEventListener("mouseenter", () => {
-    dom.controlBottom.classList.add(volumeActiveClass);
+export function createVolume(player: Player) {
+  player.dom.muteButton.addEventListener("mouseenter", () => {
+    player.dom.controlBottom.classList.add(volumeActiveClass);
   });
-  dom.controlBottom.addEventListener("mouseleave", () => {
-    dom.controlBottom.classList.remove(volumeActiveClass);
+  player.dom.controlBottom.addEventListener("mouseleave", () => {
+    player.dom.controlBottom.classList.remove(volumeActiveClass);
   });
 
-  dom.volumeSlider.min = "0";
-  dom.volumeSlider.max = "1";
-  dom.volumeSlider.step = "0.01";
-  dom.volumeSlider.valueAsNumber = dom.video.volume;
+  player.dom.volumeSlider.min = "0";
+  player.dom.volumeSlider.max = "1";
+  player.dom.volumeSlider.step = "0.01";
+  player.dom.volumeSlider.valueAsNumber = player.dom.video.volume;
 
   const updateVolumeUI = () => {
-    dom.muteButton.innerHTML = dom.video.muted
+    player.dom.muteButton.innerHTML = player.dom.video.muted
       ? volumeMuteOutline
-      : dom.video.volume > 0.8
+      : player.dom.video.volume > 0.8
       ? volumeHighOutline
-      : dom.video.volume > 0.3
+      : player.dom.video.volume > 0.3
       ? volumeMediumOutline
-      : dom.video.volume > 0
+      : player.dom.video.volume > 0
       ? volumeLowOutline
       : volumeOffOutline;
-    dom.volumeSliderParent.style.setProperty(
+    player.dom.volumeSliderParent.style.setProperty(
       "--volume-percent",
-      `${dom.video.volume * 100}%`
+      `${player.dom.video.volume * 100}%`
     );
   };
 
-  dom.video.addEventListener("volumechange", updateVolumeUI);
+  player.dom.video.addEventListener("volumechange", updateVolumeUI);
 
   let oldVolume = 1;
 
   const toggleMute = () => {
-    if (dom.video.muted) {
-      dom.video.muted = false;
-      dom.video.volume = oldVolume;
-      dom.volumeSlider.valueAsNumber = oldVolume;
+    if (player.dom.video.muted) {
+      player.dom.video.muted = false;
+      player.dom.video.volume = oldVolume;
+      player.dom.volumeSlider.valueAsNumber = oldVolume;
     } else {
-      oldVolume = dom.video.volume;
-      dom.video.muted = true;
-      dom.video.volume = 0;
-      dom.volumeSlider.valueAsNumber = 0;
+      oldVolume = player.dom.video.volume;
+      player.dom.video.muted = true;
+      player.dom.video.volume = 0;
+      player.dom.volumeSlider.valueAsNumber = 0;
     }
   };
 
-  dom.muteButton.addEventListener("click", toggleMute);
+  player.dom.muteButton.addEventListener("click", toggleMute);
 
   const getVolumeMessage = () =>
-    i18n.volume_percent.replace(
+    player.i18n.volume_percent.replace(
       "{%}",
-      `${Math.round(dom.video.volume * 100)}%`
+      `${Math.round(player.dom.video.volume * 100)}%`
     );
 
-  dom.player.addEventListener("keydown", (e) => {
+  player.dom.player.addEventListener("keydown", (e) => {
     if (e.code === "KeyM") {
       toggleMute();
     }
     if (e.code === "ArrowUp") {
       e.preventDefault();
-      dom.video.volume = Math.min(dom.video.volume + 0.1, 1);
-      notify.setMessageTimeout(getVolumeMessage(), 2000);
+      player.dom.video.volume = Math.min(player.dom.video.volume + 0.1, 1);
+      player.notify.setMessageTimeout(getVolumeMessage(), 2000);
     }
     if (e.code === "ArrowDown") {
       e.preventDefault();
-      dom.video.volume = Math.max(dom.video.volume - 0.1, 0);
-      notify.setMessageTimeout(getVolumeMessage(), 2000);
+      player.dom.video.volume = Math.max(player.dom.video.volume - 0.1, 0);
+      player.notify.setMessageTimeout(getVolumeMessage(), 2000);
     }
   });
 
-  dom.volumeSlider.addEventListener("input", () => {
-    dom.video.muted = false;
-    dom.video.volume = dom.volumeSlider.valueAsNumber;
-    notify.setMessage(getVolumeMessage());
+  player.dom.volumeSlider.addEventListener("input", () => {
+    player.dom.video.muted = false;
+    player.dom.video.volume = player.dom.volumeSlider.valueAsNumber;
+    player.notify.setMessage(getVolumeMessage());
   });
 
-  notify.mount(dom.muteButton, () =>
-    dom.video.muted ? i18n.unmute_m : i18n.mute_m
+  player.notify.mount(player.dom.muteButton, () =>
+    player.dom.video.muted ? player.i18n.unmute_m : player.i18n.mute_m
   );
-  notify.mount(dom.volumeSlider, i18n.volume_up_down);
+  player.notify.mount(player.dom.volumeSlider, player.i18n.volume_up_down);
 
   updateVolumeUI();
 
@@ -97,3 +95,5 @@ export function createVolume(dom: PlayerDOM, notify: Notify, i18n: I18n) {
     toggleMute,
   };
 }
+
+export type VolumeAPI = ReturnType<typeof createVolume>;

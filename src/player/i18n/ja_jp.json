@@ -1,6 +1,6 @@
 {
-  "fullscreen_f": "フルスクリーン (F)",
-  "exit_fullscreen_f": "フルスクリーンを終了する (F)",
+  "fullscreen_f": "全画面表示 (F)",
+  "exit_fullscreen_f": "全画面表示を終了する (F)",
   "playing_muted": "ミュート再生",
   "failed_to_play": "再生に失敗しました",
   "play_k": "再生 (K)",
@@ -8,5 +8,9 @@
   "volume_percent": "音量 {%}",
   "mute_m": "ミュート (M)",
   "unmute_m": "ミュート解除 (M)",
-  "volume_up_down": "音量 (上、下)"
+  "volume_up_down": "音量 (上、下)",
+  "settings": "設定",
+  "subtitles": "字幕",
+  "off": "オフ",
+  "subtitle_load": "字幕: {%}"
 }

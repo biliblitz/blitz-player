@@ -1,77 +1,81 @@
+import { Player } from "./player";
 import { getBufferPercent } from "../util/buffer";
 import { formatTime2, formatTimeMs } from "../util/time";
-import { PlayerDOM } from "./dom";
-import { Notify } from "./notify";
 
-export function createProgress(dom: PlayerDOM, notify: Notify) {
+export function createProgress(player: Player) {
   let sliding = false;
   let slidingValue = 0;
 
   const updateProgressUI = () => {
-    const buffer = getBufferPercent(dom.video);
+    const buffer = getBufferPercent(player.dom.video);
     const progress = sliding
       ? slidingValue
-      : isNaN(dom.video.duration) || isNaN(dom.video.currentTime)
+      : isNaN(player.dom.video.duration) || isNaN(player.dom.video.currentTime)
       ? 0
-      : dom.video.currentTime / dom.video.duration;
-    dom.progressSliderParent.style.setProperty(
+      : player.dom.video.currentTime / player.dom.video.duration;
+    player.dom.progressSliderParent.style.setProperty(
       "--progress-percent",
       `${progress * 100}%`
     );
-    dom.progressSliderParent.style.setProperty(
+    player.dom.progressSliderParent.style.setProperty(
       "--buffer-percent",
       `${buffer * 100}%`
     );
-    dom.progressSlider.valueAsNumber = progress;
+    player.dom.progressSlider.valueAsNumber = progress;
 
-    dom.time.textContent = formatTime2(
-      dom.video.currentTime,
-      dom.video.duration
+    player.dom.time.textContent = formatTime2(
+      player.dom.video.currentTime,
+      player.dom.video.duration
     );
   };
 
-  dom.progressSlider.min = "0";
-  dom.progressSlider.max = "1";
-  dom.progressSlider.step = "0.0001";
+  player.dom.progressSlider.min = "0";
+  player.dom.progressSlider.max = "1";
+  player.dom.progressSlider.step = "0.0001";
 
   updateProgressUI();
 
-  dom.video.addEventListener("progress", updateProgressUI);
-  dom.video.addEventListener("timeupdate", updateProgressUI);
+  player.dom.video.addEventListener("progress", updateProgressUI);
+  player.dom.video.addEventListener("timeupdate", updateProgressUI);
+  player.dom.video.addEventListener("loadedmetadata", updateProgressUI);
 
-  dom.progressSlider.addEventListener("input", () => {
+  player.dom.progressSlider.addEventListener("input", () => {
     sliding = true;
-    slidingValue = dom.progressSlider.valueAsNumber;
-    notify.setMessage(formatTimeMs(slidingValue * dom.video.duration));
+    slidingValue = player.dom.progressSlider.valueAsNumber;
+    player.notify.setMessage(
+      formatTimeMs(slidingValue * player.dom.video.duration)
+    );
     updateProgressUI();
   });
-  dom.progressSlider.addEventListener("change", () => {
+  player.dom.progressSlider.addEventListener("change", () => {
     sliding = false;
-    dom.video.currentTime =
-      dom.progressSlider.valueAsNumber * dom.video.duration;
-    dom.video.play();
-    notify.setMessage();
+    player.dom.video.currentTime =
+      player.dom.progressSlider.valueAsNumber * player.dom.video.duration;
+    player.dom.video.play();
+    player.notify.setMessage();
     updateProgressUI();
   });
-  dom.progressSliderParent.addEventListener("mousemove", (e) => {
+  player.dom.progressSliderParent.addEventListener("mousemove", (e) => {
     if (!sliding) {
-      const rect = dom.progressSlider.getBoundingClientRect();
+      const rect = player.dom.progressSlider.getBoundingClientRect();
       const percent = (e.clientX - rect.x) / rect.width;
-      notify.setMessage(formatTimeMs(percent * dom.video.duration));
+      player.notify.setMessage(
+        formatTimeMs(percent * player.dom.video.duration)
+      );
     }
   });
-  dom.progressSliderParent.addEventListener("mouseleave", () => {
-    notify.setMessage();
+  player.dom.progressSliderParent.addEventListener("mouseleave", () => {
+    player.notify.setMessage();
   });
 
-  dom.player.addEventListener("keydown", (e) => {
+  player.dom.player.addEventListener("keydown", (e) => {
     if (e.code === "ArrowLeft") {
-      dom.video.currentTime = dom.video.currentTime - 5.0;
-      dom.video.play();
+      player.dom.video.currentTime = player.dom.video.currentTime - 5.0;
+      player.dom.video.play();
     }
     if (e.code === "ArrowRight") {
-      dom.video.currentTime = dom.video.currentTime + 5.0;
-      dom.video.play();
+      player.dom.video.currentTime = player.dom.video.currentTime + 5.0;
+      player.dom.video.play();
     }
   });
 }

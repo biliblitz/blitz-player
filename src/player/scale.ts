@@ -1,8 +1,8 @@
-import { PlayerDOM } from "./dom";
+import { Player } from "./player";
 
-export function createAutoScaling(dom: PlayerDOM) {
+export function createAutoScaling(player: Player) {
   const updateFontSize = () => {
-    const width = dom.player.getBoundingClientRect().width;
+    const width = player.dom.player.getBoundingClientRect().width;
     const fontSize =
       width > 1400
         ? "24px"
@@ -11,9 +11,9 @@ export function createAutoScaling(dom: PlayerDOM) {
         : width > 600
         ? "14px"
         : "12.5px";
-    dom.player.style.fontSize = fontSize;
+    player.dom.player.style.fontSize = fontSize;
   };
 
   const observer = new ResizeObserver(updateFontSize);
-  observer.observe(dom.player);
+  observer.observe(player.dom.player);
 }

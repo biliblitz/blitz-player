@@ -8,5 +8,9 @@
   "volume_percent": "音量 {%}",
   "mute_m": "静音 (M)",
   "unmute_m": "取消静音 (M)",
-  "volume_up_down": "音量 (上, 下)"
+  "volume_up_down": "音量 (上, 下)",
+  "settings": "设置",
+  "subtitles": "字幕",
+  "off": "关闭",
+  "subtitle_load": "字幕: {%}"
 }

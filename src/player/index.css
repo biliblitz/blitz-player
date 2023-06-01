@@ -82,6 +82,53 @@
   bottom: 0;
 }
 
+.blzplayer-settings-box {
+  display: inline-block;
+  background-color: #111c;
+  border-radius: 0.25em;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transition: opacity 0.3s;
+  border: none;
+  outline: none;
+}
+
+.blzplayer-settings-box-open {
+  opacity: 1;
+}
+
+.blzplayer-settings-menu,
+.blzplayer-settings-speed,
+.blzplayer-settings-subtitle {
+  display: none;
+  padding: 0.5em 0;
+}
+
+.blzplayer-settings-box-open[data-open="menu"] .blzplayer-settings-menu {
+  display: block;
+}
+.blzplayer-settings-box-open[data-open="speed"] .blzplayer-settings-speed {
+  display: block;
+}
+.blzplayer-settings-box-open[data-open="subtitle"]
+  .blzplayer-settings-subtitle {
+  display: block;
+}
+
+.blzplayer-settings-subtitle-option {
+  font-size: 1.25em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+.blzplayer-settings-subtitle-option.blzplayer-subtitle-active {
+  background-color: #fff2;
+}
+.blzplayer-settings-subtitle-option:hover {
+  background-color: #fff3;
+}
+
 .blzplayer-pause-button,
 .blzplayer-play-button,
 .blzplayer-mute-button,

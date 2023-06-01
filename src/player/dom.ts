@@ -4,12 +4,17 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     <div class="blzplayer-container">
       <video class="blzplayer-video"></video>
       <div class="blzplayer-parent">
-        <canvas class="blzplayer-canvas" willReadFrequently></canvas>
+        <canvas class="blzplayer-canvas"></canvas>
       </div>
     </div>
     <div class="blzplayer-control">
       <div class="blzplayer-top">
         <div class="blzplayer-notify"></div>
+        <div class="blzplayer-settings-box" tabindex="0">
+          <div class="blzplayer-settings-menu">Menu</div>
+          <div class="blzplayer-settings-subtitle"></div>
+          <div class="blzplayer-settings-speed">Speed</div>
+        </div>
       </div>
       <div class="blzplayer-middle">
         <div class="blzplayer-progress-slider-parent">
@@ -67,6 +72,11 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const time = $("time") as HTMLDivElement;
   const notify = $("notify") as HTMLDivElement;
 
+  const settingsBox = $("settings-box") as HTMLDivElement;
+  const settingsMenu = $("settings-menu") as HTMLDivElement;
+  const settingsSpeed = $("settings-speed") as HTMLDivElement;
+  const settingsSubtitle = $("settings-subtitle") as HTMLDivElement;
+
   return {
     video,
     parent,
@@ -94,6 +104,11 @@ export function createPlayerDOM(mount: HTMLDivElement) {
 
     time,
     notify,
+
+    settingsBox,
+    settingsMenu,
+    settingsSpeed,
+    settingsSubtitle,
   };
 }
 
