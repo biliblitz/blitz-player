@@ -11,9 +11,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
       <div class="blzplayer-top">
         <div class="blzplayer-notify"></div>
         <div class="blzplayer-settings-box" tabindex="0">
-          <div class="blzplayer-settings-menu">Menu</div>
+          <div class="blzplayer-settings-menu"></div>
           <div class="blzplayer-settings-subtitle"></div>
-          <div class="blzplayer-settings-speed">Speed</div>
+          <div class="blzplayer-settings-speed"></div>
         </div>
       </div>
       <div class="blzplayer-middle">

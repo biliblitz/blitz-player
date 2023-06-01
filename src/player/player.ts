@@ -11,6 +11,7 @@ import { SubtitleAPI, createSubtitle } from "./subtitle";
 import { I18n, createI18n } from "./i18n";
 import { SettingsAPI, createSettings } from "./settings";
 import { createAutoScaling } from "./scale";
+import { SpeedAPI, createSpeed } from "./speed";
 
 export type Options = {
   container: HTMLDivElement;
@@ -28,6 +29,7 @@ export class Player {
   volume: VolumeAPI;
   settings: SettingsAPI;
   subtitle: SubtitleAPI;
+  speed: SpeedAPI;
 
   constructor(options: Options) {
     this.dom = createPlayerDOM(options.container);
@@ -42,5 +44,6 @@ export class Player {
     this.settings = createSettings(this);
     this.subtitle = createSubtitle(this);
     createAutoScaling(this);
+    this.speed = createSpeed(this);
   }
 }

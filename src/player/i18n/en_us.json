@@ -5,12 +5,15 @@
   "failed_to_play": "Failed to Play",
   "play_k": "Play (K)",
   "pause_k": "Pause (K)",
-  "volume_percent": "Volume {%}",
+  "volume_format": "Volume: {%}",
   "mute_m": "Mute (M)",
   "unmute_m": "Unmute (M)",
   "volume_up_down": "Volume (Up, Down)",
   "settings": "Settings",
   "subtitles": "Subtitles",
   "off": "off",
-  "subtitle_load": "Subtitle: {%}"
+  "subtitle_load": "Subtitle: {%}",
+  "normal": "Normal",
+  "speed": "Speed",
+  "speed_format": "Speed: {%}"
 }

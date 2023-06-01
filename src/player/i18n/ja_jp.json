@@ -5,12 +5,15 @@
   "failed_to_play": "再生に失敗しました",
   "play_k": "再生 (K)",
   "pause_k": "一時停止 (K)",
-  "volume_percent": "音量 {%}",
+  "volume_format": "音量 {%}",
   "mute_m": "ミュート (M)",
   "unmute_m": "ミュート解除 (M)",
   "volume_up_down": "音量 (上、下)",
   "settings": "設定",
   "subtitles": "字幕",
   "off": "オフ",
-  "subtitle_load": "字幕: {%}"
+  "subtitle_load": "字幕: {%}",
+  "normal": "正常",
+  "speed": "再生速度",
+  "speed_format": "再生速度 {%}"
 }

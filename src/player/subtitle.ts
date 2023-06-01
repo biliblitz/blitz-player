@@ -45,12 +45,12 @@ export function createSubtitle(player: Player) {
     }
 
     player.dom.settingsSubtitle
-      .querySelectorAll(".blzplayer-settings-subtitle-option")
+      .querySelectorAll(".blzplayer-settings-option")
       .forEach((child) => {
         if (child.getAttribute("data-lang") === activeLanguage) {
-          child.classList.add("blzplayer-subtitle-active");
+          child.classList.add("blzplayer-settings-active");
         } else {
-          child.classList.remove("blzplayer-subtitle-active");
+          child.classList.remove("blzplayer-settings-active");
         }
       });
   };
@@ -121,7 +121,7 @@ export function createSubtitle(player: Player) {
 
   function createButton(title: string, language: string) {
     const button = document.createElement("div");
-    button.classList.add("blzplayer-settings-subtitle-option");
+    button.classList.add("blzplayer-settings-option");
     button.textContent = title;
     button.setAttribute("data-lang", language);
     button.addEventListener("click", () => {
@@ -149,7 +149,7 @@ export function createSubtitle(player: Player) {
       subtitles.pop();
     }
     player.dom.settingsSubtitle
-      .querySelectorAll(".blzplayer-settings-subtitle-option")
+      .querySelectorAll(".blzplayer-settings-option")
       .forEach((child) => player.dom.settingsSubtitle.removeChild(child));
     updateSubtitleUI();
   };
