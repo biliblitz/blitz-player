@@ -11,9 +11,10 @@
   "volume_up_down": "Volume (Up, Down)",
   "settings": "Settings",
   "subtitles": "Subtitles",
-  "off": "off",
+  "off": "Off",
   "subtitle_load": "Subtitle: {%}",
   "normal": "Normal",
   "speed": "Speed",
-  "speed_format": "Speed: {%}"
+  "speed_format": "Speed: {%}",
+  "loop": "Loop"
 }
