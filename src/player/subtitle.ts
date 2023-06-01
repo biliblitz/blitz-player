@@ -3,27 +3,39 @@ import SubtitleOctopus from "@biliblitz/libass-wasm";
 import { Player } from "./player";
 import languageOutline from "../svg/language-outline.svg?raw";
 
+export type SubtitleSourceSrt = {
+  type: "srt";
+  title: string;
+  language: string;
+  source: string;
+};
+
+export type SubtitleSourceWebVtt = {
+  type: "webvtt";
+  title: string;
+  language: string;
+  source: string;
+};
+
+export type SubtitleSourceAss = {
+  type: "ass";
+  title: string;
+  language: string;
+  source: string;
+  fonts: string[];
+};
+
 export type SubtitleSource =
-  | {
-      type: "srt" | "webvtt";
-      title: string;
-      language: string;
-      source: string;
-    }
-  | {
-      type: "ass";
-      title: string;
-      language: string;
-      source: string;
-      fonts: string[];
-    };
+  | SubtitleSourceSrt
+  | SubtitleSourceWebVtt
+  | SubtitleSourceAss;
 
 export function createSubtitle(player: Player) {
   player.dom.subtitleButton.innerHTML = languageOutline;
 
   const subtitles: SubtitleSource[] = [];
-  player.dom.subtitleButton.classList.add("blzplayer-disabled");
   let activeLanguage: string = "";
+  player.dom.subtitleButton.classList.add("blzplayer-disabled");
 
   const updateSubtitleUI = () => {
     if (!subtitles.length) {
@@ -87,13 +99,13 @@ export function createSubtitle(player: Player) {
       track.label = subtitle.title;
       track.srclang = subtitle.language;
       track.src = subtitle.source;
+      track.default = true;
       player.dom.video.appendChild(track);
 
       removeCurrentSubTrackCallback = () => player.dom.video.removeChild(track);
     }
 
     if (subtitle.type === "ass") {
-      console.debug("libass-wasm: loading...");
       const oct = new SubtitleOctopus({
         video: player.dom.video,
         canvas: player.dom.canvas,
@@ -101,10 +113,7 @@ export function createSubtitle(player: Player) {
         fonts: subtitle.fonts,
       });
 
-      removeCurrentSubTrackCallback = () => {
-        console.debug("libass-wasm: removing...");
-        oct.dispose();
-      };
+      removeCurrentSubTrackCallback = () => oct.dispose();
     }
 
     updateSubtitleUI();
