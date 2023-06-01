@@ -14,7 +14,7 @@ export default defineConfig({
     },
     copyPublicDir: false,
     rollupOptions: {
-      external: [/@biliblitz\/libass-wasm/],
+      external: ["@biliblitz/libass-wasm"],
     },
   },
 });

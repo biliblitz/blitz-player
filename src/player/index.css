@@ -56,6 +56,10 @@
   transition: opacity 0.3s;
 }
 
+.blzplayer-idle {
+  cursor: none;
+}
+
 .blzplayer-idle .blzplayer-control {
   opacity: 0;
 }
@@ -63,6 +67,7 @@
 .blzplayer-top {
   margin: 0.5em 1em;
   position: relative;
+  display: flex;
 }
 
 .blzplayer-middle {
