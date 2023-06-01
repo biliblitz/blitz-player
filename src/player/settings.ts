@@ -4,6 +4,6 @@ import { Notify } from "./notify";
 
 import settingsOutline from "../svg/settings-outline.svg?raw";
 
-export function createSettings(dom: PlayerDOM, notify: Notify, i18n: I18n) {
+export function createSettings(dom: PlayerDOM, _notify: Notify, _i18n: I18n) {
   dom.settingsButton.innerHTML = settingsOutline;
 }

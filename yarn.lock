@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@biliblitz/libass-wasm@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@biliblitz/libass-wasm/-/libass-wasm-0.0.3.tgz#be75b874d27f477bfa57a9ac59985b1bcca56d3c"
+  integrity sha512-oa4ol0XNShiP978Z7NGIi0c2PILDxFuoHvmaBxLOufCK1a86OAgH8Ckz2jnNE+Zv29bMBwPaUsc1Eoe0bb50iw==
+
 "@esbuild/android-arm64@0.17.19":
   version "0.17.19"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.17.19.tgz#bafb75234a5d3d1b690e7c2956a599345e84a2fd"

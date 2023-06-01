@@ -31,7 +31,7 @@ export function createPlayer(options: Options) {
   const { load, playOrMutePlay } = createLoader(dom, notify, i18n);
   createVolume(dom, notify, i18n);
   createProgress(dom, notify);
-  createSubtitle(dom);
+  const { addSubTrack, loadSubTrack, clearSubTracks } = createSubtitle(dom);
   createSettings(dom, notify, i18n);
   createAutoScaling(dom);
 
@@ -43,5 +43,8 @@ export function createPlayer(options: Options) {
     pause,
     load,
     playOrMutePlay,
+    addSubTrack,
+    loadSubTrack,
+    clearSubTracks,
   };
 }

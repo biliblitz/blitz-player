@@ -4,7 +4,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     <div class="blzplayer-container">
       <video class="blzplayer-video"></video>
       <div class="blzplayer-parent">
-        <canvas class="blzplayer-canvas"></canvas>
+        <canvas class="blzplayer-canvas" willReadFrequently></canvas>
       </div>
     </div>
     <div class="blzplayer-control">
