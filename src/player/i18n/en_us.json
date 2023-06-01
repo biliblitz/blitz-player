@@ -1,0 +1,12 @@
+{
+  "fullscreen_f": "Fullscreen (F)",
+  "exit_fullscreen_f": "Exit Fullscreen (F)",
+  "playing_muted": "Playing Muted",
+  "failed_to_play": "Failed to Play",
+  "play_k": "Play (K)",
+  "pause_k": "Pause (K)",
+  "volume_percent": "Volume {%}",
+  "mute_m": "Mute (M)",
+  "unmute_m": "Unmute (M)",
+  "volume_up_down": "Volume (Up, Down)"
+}

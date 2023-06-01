@@ -3,8 +3,9 @@ import { Notify } from "./notify";
 
 import contractOutline from "../svg/contract-outline.svg?raw";
 import expandOutline from "../svg/expand-outline.svg?raw";
+import { I18n } from "./i18n";
 
-export function createFullscreen(dom: PlayerDOM, notify: Notify) {
+export function createFullscreen(dom: PlayerDOM, notify: Notify, i18n: I18n) {
   dom.fullscreenQuitButton.innerHTML = contractOutline;
   dom.fullscreenButton.innerHTML = expandOutline;
 
@@ -16,13 +17,14 @@ export function createFullscreen(dom: PlayerDOM, notify: Notify) {
   dom.fullscreenButton.addEventListener("click", fullscreen);
   dom.fullscreenQuitButton.addEventListener("click", exitFullscreen);
 
-  notify.mount(dom.fullscreenButton, "Fullscreen (F)");
-  notify.mount(dom.fullscreenQuitButton, "Exit Fullscreen (F)");
+  notify.mount(dom.fullscreenButton, i18n.fullscreen_f);
+  notify.mount(dom.fullscreenQuitButton, i18n.exit_fullscreen_f);
 
-  dom.player.addEventListener(
-    "keydown",
-    (e) => e.code === "KeyF" && toggleFullscreen()
-  );
+  dom.player.addEventListener("keydown", (e) => {
+    if (e.code === "KeyF") {
+      toggleFullscreen();
+    }
+  });
 
   return {
     fullscreen,

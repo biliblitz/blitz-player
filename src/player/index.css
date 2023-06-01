@@ -80,12 +80,18 @@
 .blzplayer-pause-button,
 .blzplayer-play-button,
 .blzplayer-mute-button,
-.blzplayer-subtitles-button,
+.blzplayer-settings-button,
+.blzplayer-subtitle-button,
 .blzplayer-fullscreen-button,
 .blzplayer-fullscreen-quit-button {
   height: 1.5rem;
   width: 1.5rem;
   cursor: pointer;
+}
+
+.blzplayer-disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .blzplayer-time {

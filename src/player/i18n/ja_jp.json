@@ -1,0 +1,12 @@
+{
+  "fullscreen_f": "フルスクリーン (F)",
+  "exit_fullscreen_f": "フルスクリーンを終了する (F)",
+  "playing_muted": "ミュート再生",
+  "failed_to_play": "再生に失敗しました",
+  "play_k": "再生 (K)",
+  "pause_k": "一時停止 (K)",
+  "volume_percent": "音量 {%}",
+  "mute_m": "ミュート (M)",
+  "unmute_m": "ミュート解除 (M)",
+  "volume_up_down": "音量 (上、下)"
+}

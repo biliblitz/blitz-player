@@ -9,7 +9,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     </div>
     <div class="blzplayer-control">
       <div class="blzplayer-top">
-        <div class="blzplayer-notify">加载中...</div>
+        <div class="blzplayer-notify"></div>
       </div>
       <div class="blzplayer-middle">
         <div class="blzplayer-progress-slider-parent">
@@ -27,7 +27,8 @@ export function createPlayerDOM(mount: HTMLDivElement) {
           <div class="blzplayer-time">--:--/--:--</div>
         </div>
         <div class="blzplayer-bottom-right">
-          <div class="blzplayer-subtitles-button"></div>
+          <div class="blzplayer-settings-button"></div>
+          <div class="blzplayer-subtitle-button"></div>
           <div class="blzplayer-fullscreen-button"></div>
           <div class="blzplayer-fullscreen-quit-button"></div>
         </div>
@@ -60,6 +61,8 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const muteButton = $("mute-button") as HTMLDivElement;
   const fullscreenButton = $("fullscreen-button") as HTMLDivElement;
   const fullscreenQuitButton = $("fullscreen-quit-button") as HTMLDivElement;
+  const subtitleButton = $("subtitle-button") as HTMLDivElement;
+  const settingsButton = $("settings-button") as HTMLDivElement;
 
   const time = $("time") as HTMLDivElement;
   const notify = $("notify") as HTMLDivElement;
@@ -86,6 +89,8 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     muteButton,
     fullscreenButton,
     fullscreenQuitButton,
+    subtitleButton,
+    settingsButton,
 
     time,
     notify,

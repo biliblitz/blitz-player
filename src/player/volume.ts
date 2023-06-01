@@ -1,5 +1,6 @@
 import { PlayerDOM } from "./dom";
 import { Notify } from "./notify";
+import { I18n } from "./i18n";
 
 import volumeHighOutline from "../svg/volume-high-outline.svg?raw";
 import volumeLowOutline from "../svg/volume-low-outline.svg?raw";
@@ -9,7 +10,7 @@ import volumeOffOutline from "../svg/volume-off-outline.svg?raw";
 
 const volumeActiveClass = "blzplayer-volume-active";
 
-export function createVolume(dom: PlayerDOM, notify: Notify) {
+export function createVolume(dom: PlayerDOM, notify: Notify, i18n: I18n) {
   dom.muteButton.addEventListener("mouseenter", () => {
     dom.controlBottom.classList.add(volumeActiveClass);
   });
@@ -58,7 +59,10 @@ export function createVolume(dom: PlayerDOM, notify: Notify) {
   dom.muteButton.addEventListener("click", toggleMute);
 
   const getVolumeMessage = () =>
-    `Volume ${Math.round(dom.video.volume * 100)}%`;
+    i18n.volume_percent.replace(
+      "{%}",
+      `${Math.round(dom.video.volume * 100)}%`
+    );
 
   dom.player.addEventListener("keydown", (e) => {
     if (e.code === "KeyM") {
@@ -83,9 +87,9 @@ export function createVolume(dom: PlayerDOM, notify: Notify) {
   });
 
   notify.mount(dom.muteButton, () =>
-    dom.video.muted ? "Unmute (M)" : "Mute (M)"
+    dom.video.muted ? i18n.unmute_m : i18n.mute_m
   );
-  notify.mount(dom.volumeSlider, "Volume (Up, Down)");
+  notify.mount(dom.volumeSlider, i18n.volume_up_down);
 
   updateVolumeUI();
 

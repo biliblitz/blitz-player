@@ -3,8 +3,9 @@ import { Notify } from "./notify";
 
 import playOutline from "../svg/play-outline.svg?raw";
 import pauseOutline from "../svg/pause-outline.svg?raw";
+import { I18n } from "./i18n";
 
-export function createPlayPause(dom: PlayerDOM, notify: Notify) {
+export function createPlayPause(dom: PlayerDOM, notify: Notify, i18n: I18n) {
   dom.playButton.innerHTML = playOutline;
   dom.pauseButton.innerHTML = pauseOutline;
 
@@ -15,13 +16,15 @@ export function createPlayPause(dom: PlayerDOM, notify: Notify) {
   dom.playButton.addEventListener("click", play);
   dom.pauseButton.addEventListener("click", pause);
 
-  notify.mount(dom.playButton, "Play (K)");
-  notify.mount(dom.pauseButton, "Pause (K)");
+  notify.mount(dom.playButton, i18n.play_k);
+  notify.mount(dom.pauseButton, i18n.pause_k);
 
   dom.container.addEventListener("click", toggle);
   dom.player.addEventListener("keydown", (e) => {
-    console.log(e.code);
     if (e.code === "KeyK") {
+      toggle();
+    }
+    if (e.code === "Space") {
       toggle();
     }
   });

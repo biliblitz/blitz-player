@@ -1,0 +1,12 @@
+{
+  "fullscreen_f": "全螢幕 (F)",
+  "exit_fullscreen_f": "退出全螢幕 (F)",
+  "playing_muted": "靜音播放",
+  "failed_to_play": "播放失敗",
+  "play_k": "播放 (K)",
+  "pause_k": "暫停 (K)",
+  "volume_percent": "音量 {%}",
+  "mute_m": "靜音 (M)",
+  "unmute_m": "取消靜音 (M)",
+  "volume_up_down": "音量 (上, 下)"
+}
