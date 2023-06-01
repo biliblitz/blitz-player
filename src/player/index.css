@@ -1,6 +1,7 @@
 .blzplayer {
   aspect-ratio: 16 / 9;
   position: relative;
+  user-select: none;
 }
 
 .blzplayer::backdrop {
