@@ -32,6 +32,7 @@
   position: absolute;
   pointer-events: none;
   display: block;
+  bottom: 0;
 }
 
 .blzplayer-control {
@@ -39,23 +40,23 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, #0005, transparent);
   display: flex;
   color: white;
   flex-direction: column;
+  background: linear-gradient(to top, #000a, transparent);
 }
 
 .blzplayer-top {
-  padding: 0 1rem;
+  margin: 0.5em 1em;
+  position: relative;
 }
 
 .blzplayer-middle {
-  margin-top: 0.25rem;
-  padding: 0 1rem;
+  padding: 0 1em;
 }
 
 .blzplayer-bottom {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75em 1.5em;
   display: flex;
   justify-content: space-between;
 }
@@ -64,18 +65,21 @@
 .blzplayer-bottom-right {
   display: inline-flex;
   align-items: center;
-  gap: 1.25rem;
-  font-size: 1.2rem;
+  gap: 1.25em;
+  font-size: 1.2em;
 }
 
 .blzplayer-notify {
   display: inline-block;
   background-color: #000a;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .blzplayer-pause-button,
@@ -85,8 +89,8 @@
 .blzplayer-subtitle-button,
 .blzplayer-fullscreen-button,
 .blzplayer-fullscreen-quit-button {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.5em;
+  width: 1.5em;
   cursor: pointer;
 }
 
@@ -96,7 +100,7 @@
 }
 
 .blzplayer-time {
-  margin-left: -1.25rem;
+  margin-left: -1.25em;
 }
 
 .blzplayer:fullscreen .blzplayer-fullscreen-button {
@@ -113,16 +117,16 @@
   position: relative;
   overflow: hidden;
   align-items: center;
-  height: 1rem;
+  height: 1em;
   opacity: 0;
   margin-right: 0;
   transition: width 0.3s, opacity 0.3s, margin-right 0.3s;
 }
 
 .blzplayer-volume-active .blzplayer-volume-slider-parent {
-  width: 5rem;
+  width: 5em;
   opacity: 1;
-  margin-right: 1.25rem;
+  margin-right: 1.25em;
 }
 
 .blzplayer-volume-slider-parent::after {
@@ -130,9 +134,9 @@
   display: block;
   position: absolute;
   width: var(--volume-percent);
-  height: 0.25rem;
+  height: 0.25em;
   left: 0;
-  top: 0.375rem;
+  top: 0.375em;
   background-color: white;
   pointer-events: none;
 }
@@ -140,7 +144,7 @@
 .blzplayer-volume-slider {
   all: unset;
   width: 100%;
-  height: 0.25rem;
+  height: 0.25em;
   cursor: pointer;
   background-color: #fff6;
 }
@@ -149,8 +153,8 @@
   appearance: none;
   border: none;
   outline: none;
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.75em;
+  height: 0.75em;
   border-radius: 100%;
   background-color: white;
 }
@@ -159,8 +163,8 @@
   appearance: none;
   border: none;
   outline: none;
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.75em;
+  height: 0.75em;
   border-radius: 100%;
   background-color: white;
 }
@@ -169,14 +173,14 @@
   background-color: #fff3;
   background-clip: content-box;
   display: flex;
-  height: 0.25rem;
+  height: 0.25em;
   position: relative;
-  padding-top: 0.25rem;
+  padding-top: 0.25em;
   transition: height 0.3s, padding-top 0.3s;
 }
 
 .blzplayer-progress-slider-parent:hover {
-  height: 0.5rem;
+  height: 0.5em;
   padding-top: 0;
 }
 
@@ -185,7 +189,7 @@
   position: absolute;
   display: block;
   width: var(--buffer-percent);
-  height: 0.25rem;
+  height: 0.25em;
   background-color: #fff3;
   pointer-events: none;
   transition: height 0.3s;
@@ -196,7 +200,7 @@
   position: absolute;
   display: block;
   width: var(--progress-percent);
-  height: 0.25rem;
+  height: 0.25em;
   background-color: purple;
   pointer-events: none;
   transition: height 0.3s;
@@ -204,20 +208,20 @@
 
 .blzplayer-progress-slider-parent:hover::before,
 .blzplayer-progress-slider-parent:hover::after {
-  height: 0.5rem;
+  height: 0.5em;
 }
 
 .blzplayer-progress-slider {
   all: unset;
   position: relative;
   width: 100%;
-  height: 0.25rem;
+  height: 0.25em;
   cursor: pointer;
   transition: height 0.3s;
 }
 
 .blzplayer-progress-slider-parent:hover .blzplayer-progress-slider {
-  height: 0.5rem;
+  height: 0.5em;
 }
 
 .blzplayer-progress-slider::-webkit-slider-thumb {
@@ -234,8 +238,8 @@
 
 .blzplayer-progress-slider-parent:hover
   .blzplayer-progress-slider::-webkit-slider-thumb {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.25em;
+  height: 1.25em;
   opacity: 1;
 }
 
@@ -253,7 +257,7 @@
 
 .blzplayer-progress-slider-parent:hover
   .blzplayer-progress-slider::-moz-range-thumb {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.25em;
+  height: 1.25em;
   opacity: 1;
 }

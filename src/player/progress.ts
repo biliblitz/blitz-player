@@ -60,7 +60,9 @@ export function createProgress(dom: PlayerDOM, notify: Notify) {
       notify.setMessage(formatTimeMs(percent * dom.video.duration));
     }
   });
-  dom.progressSlider.addEventListener("mouseleave", () => notify.setMessage());
+  dom.progressSliderParent.addEventListener("mouseleave", () => {
+    notify.setMessage();
+  });
 
   dom.player.addEventListener("keydown", (e) => {
     if (e.code === "ArrowLeft") {

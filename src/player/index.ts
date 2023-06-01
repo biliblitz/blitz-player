@@ -10,6 +10,7 @@ import { createNotify } from "./notify";
 import { createSubtitle } from "./subtitles";
 import { createI18n } from "./i18n";
 import { createSettings } from "./settings";
+import { createAutoScaling } from "./scale";
 
 export type Options = {
   container: HTMLDivElement;
@@ -32,6 +33,7 @@ export function createPlayer(options: Options) {
   createProgress(dom, notify);
   createSubtitle(dom);
   createSettings(dom, notify, i18n);
+  createAutoScaling(dom);
 
   return {
     fullscreen,
