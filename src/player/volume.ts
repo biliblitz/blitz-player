@@ -7,12 +7,14 @@ import volumeMediumOutline from "../svg/volume-medium-outline.svg?raw";
 import volumeMuteOutline from "../svg/volume-mute-outline.svg?raw";
 import volumeOffOutline from "../svg/volume-off-outline.svg?raw";
 
+const volumeActiveClass = "blzplayer-volume-active";
+
 export function createVolume(dom: PlayerDOM, notify: Notify) {
   dom.muteButton.addEventListener("mouseenter", () => {
-    dom.controlBottom.classList.add("player__volume-active");
+    dom.controlBottom.classList.add(volumeActiveClass);
   });
   dom.controlBottom.addEventListener("mouseleave", () => {
-    dom.controlBottom.classList.remove("player__volume-active");
+    dom.controlBottom.classList.remove(volumeActiveClass);
   });
 
   dom.volumeSlider.min = "0";
@@ -38,7 +40,7 @@ export function createVolume(dom: PlayerDOM, notify: Notify) {
 
   dom.video.addEventListener("volumechange", updateVolumeUI);
 
-  let oldVolume = 0;
+  let oldVolume = 1;
 
   const toggleMute = () => {
     if (dom.video.muted) {

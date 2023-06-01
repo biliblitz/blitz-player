@@ -1,35 +1,35 @@
 export function createPlayerDOM(mount: HTMLDivElement) {
   mount.innerHTML = `
-  <div class="player">
-    <div class="player__container">
-      <video class="player__video"></video>
-      <div class="player__parent">
-        <canvas class="player__canvas"></canvas>
+  <div class="blzplayer" tabindex="0">
+    <div class="blzplayer-container">
+      <video class="blzplayer-video"></video>
+      <div class="blzplayer-parent">
+        <canvas class="blzplayer-canvas"></canvas>
       </div>
     </div>
-    <div class="player__control">
-      <div class="player__top">
-        <div class="player__notify">加载中...</div>
+    <div class="blzplayer-control">
+      <div class="blzplayer-top">
+        <div class="blzplayer-notify">加载中...</div>
       </div>
-      <div class="player__middle">
-        <div class="player__progress-slider-parent">
-          <input class="player__progress-slider" type="range" />
+      <div class="blzplayer-middle">
+        <div class="blzplayer-progress-slider-parent">
+          <input class="blzplayer-progress-slider" type="range" />
         </div>
       </div>
-      <div class="player__bottom">
-        <div class="player__bottom-left">
-          <div class="player__play-button"></div>
-          <div class="player__pause-button"></div>
-          <div class="player__mute-button"></div>
-          <div class="player__volume-slider-parent">
-            <input class="player__volume-slider" type="range" />
+      <div class="blzplayer-bottom">
+        <div class="blzplayer-bottom-left">
+          <div class="blzplayer-play-button"></div>
+          <div class="blzplayer-pause-button"></div>
+          <div class="blzplayer-mute-button"></div>
+          <div class="blzplayer-volume-slider-parent">
+            <input class="blzplayer-volume-slider" type="range" />
           </div>
-          <div class="player__time">--:--/--:--</div>
+          <div class="blzplayer-time">--:--/--:--</div>
         </div>
-        <div class="player__bottom-right">
-          <div class="player__subtitles-button"></div>
-          <div class="player__fullscreen-button"></div>
-          <div class="player__fullscreen-quit-button"></div>
+        <div class="blzplayer-bottom-right">
+          <div class="blzplayer-subtitles-button"></div>
+          <div class="blzplayer-fullscreen-button"></div>
+          <div class="blzplayer-fullscreen-quit-button"></div>
         </div>
       </div>
     </div>
@@ -37,9 +37,9 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   `;
 
   const $ = (x: string) =>
-    mount.querySelector(x.startsWith(".") ? x : ".player__" + x);
+    mount.querySelector(x.startsWith(".") ? x : ".blzplayer-" + x);
 
-  const player = $(".player") as HTMLDivElement;
+  const player = $(".blzplayer") as HTMLDivElement;
   const container = $("container") as HTMLDivElement;
   const video = $("video") as HTMLVideoElement;
   const parent = $("parent") as HTMLDivElement;

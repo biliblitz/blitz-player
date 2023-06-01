@@ -3,7 +3,7 @@ import "./index.css";
 import { createPlayerDOM } from "./dom";
 import { createFullscreen } from "./fullscreen";
 import { createPlayPause } from "./playpause";
-import { createVideo } from "./video";
+import { createLoader } from "./loader";
 import { createVolume } from "./volume";
 import { createProgress } from "./progress";
 import { createNotify } from "./notify";
@@ -17,7 +17,7 @@ export function createPlayer(mount: HTMLDivElement) {
     notify
   );
   const { play, pause } = createPlayPause(dom, notify);
-  createVideo(dom);
+  const { load, playOrMutePlay } = createLoader(dom, notify);
   createVolume(dom, notify);
   createProgress(dom, notify);
 
@@ -27,5 +27,7 @@ export function createPlayer(mount: HTMLDivElement) {
     toggleFullscreen,
     play,
     pause,
+    load,
+    playOrMutePlay,
   };
 }

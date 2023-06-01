@@ -53,7 +53,7 @@ export function createProgress(dom: PlayerDOM, notify: Notify) {
     notify.setMessage();
     updateProgressUI();
   });
-  dom.progressSlider.addEventListener("mousemove", (e) => {
+  dom.progressSliderParent.addEventListener("mousemove", (e) => {
     if (!sliding) {
       const rect = dom.progressSlider.getBoundingClientRect();
       const percent = (e.clientX - rect.x) / rect.width;

@@ -1,12 +1,30 @@
 {
-  "name": "vite-project",
+  "name": "@biliblitz/blitz-player",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/biliblitz/blitz-player",
+  "bugs": {
+    "url": "https://github.com/biliblitz/blitz-player/issues",
+    "email": "i@sww.moe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biliblitz/blitz-player.git"
   },
   "devDependencies": {
     "typescript": "^5.0.2",

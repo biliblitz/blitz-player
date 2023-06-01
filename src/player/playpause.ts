@@ -19,7 +19,12 @@ export function createPlayPause(dom: PlayerDOM, notify: Notify) {
   notify.mount(dom.pauseButton, "Pause (K)");
 
   dom.container.addEventListener("click", toggle);
-  dom.player.addEventListener("keydown", (e) => e.code === "KeyK" && toggle());
+  dom.player.addEventListener("keydown", (e) => {
+    console.log(e.code);
+    if (e.code === "KeyK") {
+      toggle();
+    }
+  });
 
   const updatePlayPauseUI = () => {
     const paused = dom.video.paused;
