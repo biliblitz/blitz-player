@@ -24,6 +24,14 @@
   object-position: center;
 }
 
+.blzplayer-video::cue {
+  color: white;
+  background-color: transparent;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 0 0 0.05em black;
+}
+
 .blzplayer-parent {
   position: relative;
 }
@@ -84,7 +92,6 @@
 
 .blzplayer-settings-box {
   display: inline-block;
-  border-radius: 0.25em;
   border: none;
   outline: none;
 }
@@ -93,11 +100,12 @@
 .blzplayer-settings-speed,
 .blzplayer-settings-subtitle {
   background-color: #111c;
+  border-radius: 0.25em;
   position: absolute;
   right: 0;
   bottom: 0;
   opacity: 0;
-  padding: 0.5em 0;
+  padding: 0.25em 0;
   visibility: hidden;
   transition: visibility 0.3s step-end, opacity 0.3s;
 }
@@ -126,6 +134,7 @@
   gap: 1em;
   align-items: center;
   justify-content: space-between;
+  transition: background-color 0.3s;
 }
 .blzplayer-settings-option.blzplayer-settings-active {
   background-color: #fff2;
