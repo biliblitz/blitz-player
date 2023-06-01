@@ -4,19 +4,21 @@ const app = document.getElementById("app") as HTMLDivElement;
 
 const player = new Player({ container: app });
 
-player.loader.load("/onimai-pv.webm");
+const BASE = import.meta.env.BASE_URL;
+
+player.loader.load(BASE + "onimai-pv.webm");
 player.subtitle.addSubTrack({
   type: "ass",
   language: "zh-CN",
   title: "ASS Example",
-  source: "/example.ass",
+  source: BASE + "example.ass",
   fonts: [],
 });
 player.subtitle.addSubTrack({
   type: "webvtt",
   language: "zh-TW",
   title: "WebVTT Example",
-  source: "/example.vtt",
+  source: BASE + "example.vtt",
 });
 
 player.subtitle.loadSubTrack("zh-CN");

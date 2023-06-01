@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/blitz-player",
+  base: "/blitz-player/",
   optimizeDeps: {
     exclude: ["@biliblitz/libass-wasm"],
   },
