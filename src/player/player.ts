@@ -14,6 +14,7 @@ import { createAutoScaling } from "./scale";
 import { SpeedAPI, createSpeed } from "./speed";
 import { MenuAPI, createMenu } from "./menu";
 import { createLoop } from "./loop";
+import { createIdle } from "./idle";
 
 export type Options = {
   container: HTMLDivElement;
@@ -51,5 +52,7 @@ export class Player {
     this.speed = createSpeed(this);
     createLoop(this);
     this.subtitle = createSubtitle(this);
+
+    createIdle(this);
   }
 }

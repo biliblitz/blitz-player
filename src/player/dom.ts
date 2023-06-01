@@ -51,6 +51,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
   const parent = $("parent") as HTMLDivElement;
   const canvas = $("canvas") as HTMLCanvasElement;
 
+  const control = $("control") as HTMLDivElement;
   const controlTop = $("top") as HTMLDivElement;
   const controlBottom = $("bottom") as HTMLDivElement;
   const controlBottomLeft = $("bottom-left") as HTMLDivElement;
@@ -84,6 +85,7 @@ export function createPlayerDOM(mount: HTMLDivElement) {
     player,
     container,
 
+    control,
     controlTop,
     controlBottom,
     controlBottomLeft,

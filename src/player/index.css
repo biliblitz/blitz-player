@@ -52,6 +52,12 @@
   color: white;
   flex-direction: column;
   background: linear-gradient(to top, #000a, transparent);
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.blzplayer-idle .blzplayer-control {
+  opacity: 0;
 }
 
 .blzplayer-top {
